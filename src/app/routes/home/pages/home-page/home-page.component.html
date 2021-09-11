@@ -1,2 +1,48 @@
-<p>home-page works!</p>
-<router-outlet></router-outlet>
+<div class="container">
+  <header
+    class="
+      d-flex
+      flex-wrap
+      align-items-center
+      justify-content-center justify-content-md-between
+      py-3
+      mb-4
+      border-bottom
+    ">
+    <a
+      href="/"
+      class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+      <img alt="Logo" src="/assets/logo.png" class="logo-img" />
+      <span class="fs-4">&nbsp;Articles</span>
+    </a>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/home"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }">
+          Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/articles" routerLinkActive="active">Articles</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [href]="logoutPage">Logout</a>
+      </li>
+    </ul>
+
+    <div class="col-md-3 text-end">
+      <a class="btn btn-outline-primary me-2" [href]="logoutPage">Logout</a>
+    </div>
+  </header>
+
+  <router-outlet></router-outlet>
+</div>
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <span class="text-muted">Copyright &copy; {{ year }}</span>
+  </div>
+</footer>

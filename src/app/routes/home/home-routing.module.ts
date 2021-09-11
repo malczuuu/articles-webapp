@@ -8,6 +8,13 @@ const routes: Routes = [
     component: HomePageComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'home',
+      },
+      {
+        path: 'home',
+      },
+      {
         path: 'articles',
         loadChildren: () => import('../articles/articles.module').then((m) => m.ArticlesModule),
       },
