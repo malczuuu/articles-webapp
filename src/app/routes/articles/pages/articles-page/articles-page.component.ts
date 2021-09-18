@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../../../../core/api/article.service';
 import { Slice } from '../../../../core/api/slice.model';
 import { Article } from '../../../../core/api/article.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-articles-page',
@@ -18,5 +19,13 @@ export class ArticlesPageComponent implements OnInit {
     this.articleService
       .findArticles(this.limit)
       .subscribe((articles) => (this.articles = articles));
+  }
+
+  getDate(article: Article): string {
+    return moment(article.last_modified_date).format('YYYY-MM-DD');
+  }
+
+  getTimestamp(article: Article): string {
+    return moment(article.last_modified_date).format('YYYY-MM-DD HH:mm:ss');
   }
 }

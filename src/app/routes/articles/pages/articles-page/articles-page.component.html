@@ -1,7 +1,21 @@
-<div class="row mb-2" *ngIf="articles">
-  <div
-    appArticleCard
-    class="col-md-4"
-    *ngFor="let article of articles.content"
-    [article]="article"></div>
+<div class="card">
+  <h5 class="card-header">Browse Articles</h5>
+  <div class="card-body">
+    <table class="table" *ngIf="articles">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let article of articles.content">
+          <th scope="row" class="fit" [title]="getTimestamp(article)">{{ getDate(article) }}</th>
+          <td>
+            <a [routerLink]="'/articles/browse/' + article.id">{{ article.title }}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

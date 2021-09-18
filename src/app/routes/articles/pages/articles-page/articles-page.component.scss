@@ -1,0 +1,9 @@
+.table td.fit,
+.table th.fit {
+  white-space: nowrap;
+  width: 1%;
+}
+
+th[scope='row'] {
+  font-weight: normal;
+}
