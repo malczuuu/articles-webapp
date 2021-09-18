@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Article } from '../../../../core/api/article.model';
+import * as moment from 'moment';
 
 @Component({
   selector: '[appArticleCard]',
@@ -18,11 +19,7 @@ export class ArticleCardComponent implements OnInit {
     return this.article ? this.article.id : '';
   }
 
-  getSummary(): string {
-    const content = this.article ? this.article.content : '';
-    if (content.length > 80) {
-      return content.substr(0, 80) + '...';
-    }
-    return content;
+  getTimestamp(): string {
+    return moment(this.article?.last_modified_date).format('YYYY-MM-DD');
   }
 }
