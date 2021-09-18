@@ -11,14 +11,18 @@ import * as moment from 'moment';
 })
 export class ArticlesPageComponent implements OnInit {
   limit: number = 20;
-  articles?: Slice<Article>;
+  articles: Article[] = [];
+  page?: Slice<Article>;
 
   constructor(private articleService: ArticleService) {}
 
   ngOnInit(): void {
-    this.articleService
-      .findArticles(this.limit)
-      .subscribe((articles) => (this.articles = articles));
+    this.articleService.findArticles(this.limit).subscribe((page) => this.onPageRetrieval(page));
+  }
+
+  private onPageRetrieval(page: Slice<Article>) {
+    this.page = page;
+    this.articles.push(...page.content);
   }
 
   getDate(article: Article): string {
@@ -27,5 +31,20 @@ export class ArticlesPageComponent implements OnInit {
 
   getTimestamp(article: Article): string {
     return moment(article.last_modified_date).format('YYYY-MM-DD HH:mm:ss');
+  }
+
+  onSeeMoreClick() {
+    if (this.page?._links.next) {
+      this.articleService
+        .findArticlesByPath(this.page!._links.next)
+        .subscribe((page) => this.onPageRetrieval(page));
+    } else {
+      this.articleService.findArticlesByPath(this.page!._links.self).subscribe((page) => {
+        for (let i = 0; i < this.page!.content.length; ++i) {
+          this.articles.pop();
+        }
+        this.onPageRetrieval(page);
+      });
+    }
   }
 }

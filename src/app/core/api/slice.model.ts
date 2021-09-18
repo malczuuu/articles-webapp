@@ -1,4 +1,4 @@
 export interface Slice<T> {
   content: T[];
-  _links: { next: string };
+  _links: { self: string; next?: string };
 }

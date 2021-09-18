@@ -16,8 +16,8 @@ export class ArticleService {
     return this.httpClient.get<Slice<Article>>(this.api, { params: { limit: limit.toString() } });
   }
 
-  findArticlesNextPage(next: string): Observable<Slice<Article>> {
-    return this.httpClient.get<Slice<Article>>(next);
+  findArticlesByPath(path: string): Observable<Slice<Article>> {
+    return this.httpClient.get<Slice<Article>>(path);
   }
 
   findArticleById(id: string): Observable<Article> {
