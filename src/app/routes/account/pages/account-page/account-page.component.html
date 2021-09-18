@@ -1,1 +1,27 @@
-<pre *ngIf="account">{{ account | json }}</pre>
+<div class="container container-fluid">
+  <div class="row justify-content-center">
+    <div class="col col-xl-8 col-lg-10">
+      <div class="card" *ngIf="account">
+        <div class="card-header">Account</div>
+        <div class="card-body">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row" class="fit">Username</th>
+                <td>{{ account?.username }}</td>
+              </tr>
+              <tr>
+                <th scope="row" class="fit">User ID</th>
+                <td>{{ account?.userid }}</td>
+              </tr>
+              <tr>
+                <th scope="row" class="fit">Realm</th>
+                <td>{{ account?.realm }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

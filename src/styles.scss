@@ -1,1 +1,7 @@
 @import "~node_modules/bootstrap/scss/bootstrap.scss";
+
+.table td.fit,
+.table th.fit {
+  white-space: nowrap;
+  width: 1%;
+}
