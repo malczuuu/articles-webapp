@@ -1,5 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { AccountService } from '../../../../core/api/account.service';
 
 @Component({
   selector: 'app-home-page',
@@ -10,18 +11,26 @@ export class HomePageComponent implements OnInit {
   @HostBinding('class')
   className = 'd-flex flex-column h-100';
 
-  logoutPage: string = '/oauth/logout?redirect=/';
+  logoutPage: string = '/oauth/logout';
   year = '2021';
 
   private since = 2021;
 
-  constructor() {}
+  constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {
+    this.accountService.headAccount().subscribe(
+      () => {},
+      () => window.location.reload()
+    );
+
     const now = moment();
 
     if (now.year() > this.since) {
       this.year = `2021−${now.year()}`;
     }
+
+    const redirect = `${window.location.protocol}//${window.location.hostname}`;
+    this.logoutPage = `${this.logoutPage}?redirect=${redirect}`;
   }
 }

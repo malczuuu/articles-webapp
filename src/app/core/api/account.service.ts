@@ -14,4 +14,8 @@ export class AccountService {
   findAccount(): Observable<Account> {
     return this.httpClient.get<Account>(this.api);
   }
+
+  headAccount(): Observable<void> {
+    return this.httpClient.head<void>(this.api);
+  }
 }
