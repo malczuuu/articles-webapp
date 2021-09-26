@@ -1,1 +1,5 @@
-<pre *ngIf="article">{{ article | json }}</pre>
+<app-article-form
+  *ngIf="article"
+  [article]="article"
+  [message]="savedMessage"
+  (save)="onSave($event)"></app-article-form>

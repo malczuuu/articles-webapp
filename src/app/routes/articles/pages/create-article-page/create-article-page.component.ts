@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ArticleService } from '../../../../core/api/article.service';
 import { Router } from '@angular/router';
+import { ArticleUpdate } from '../../../../core/api/article.model';
 
 @Component({
   selector: 'app-create-article-page',
@@ -30,6 +31,12 @@ export class CreateArticlePageComponent implements OnInit {
         title: title,
         content: content,
       })
+      .subscribe((article) => this.router.navigateByUrl(`/articles/browse/${article.id}`));
+  }
+
+  onSave(article: ArticleUpdate) {
+    this.articleService
+      .createArticle(article)
       .subscribe((article) => this.router.navigateByUrl(`/articles/browse/${article.id}`));
   }
 }

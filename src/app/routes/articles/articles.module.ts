@@ -5,9 +5,15 @@ import { ArticlesPageComponent } from './pages/articles-page/articles-page.compo
 import { CreateArticlePageComponent } from './pages/create-article-page/create-article-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowseArticlePageComponent } from './pages/browse-article-page/browse-article-page.component';
+import { ArticleFormComponent } from './components/article-form/article-form.component';
 
 @NgModule({
-  declarations: [ArticlesPageComponent, CreateArticlePageComponent, BrowseArticlePageComponent],
+  declarations: [
+    ArticlesPageComponent,
+    CreateArticlePageComponent,
+    BrowseArticlePageComponent,
+    ArticleFormComponent,
+  ],
   imports: [CommonModule, ArticlesRoutingModule, ReactiveFormsModule],
 })
 export class ArticlesModule {}

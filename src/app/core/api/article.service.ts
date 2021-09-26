@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Slice } from './slice.model';
-import { Article, ArticleCreate, ArticleUpdate } from './article.model';
+import { Article, ArticleUpdate } from './article.model';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +24,7 @@ export class ArticleService {
     return this.httpClient.get<Article>(`${this.api}/${id}`);
   }
 
-  createArticle(article: ArticleCreate): Observable<Article> {
+  createArticle(article: ArticleUpdate): Observable<Article> {
     return this.httpClient.post<Article>(this.api, article);
   }
 

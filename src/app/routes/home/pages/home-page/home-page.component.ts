@@ -1,6 +1,7 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { AccountService } from '../../../../core/api/account.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-home-page',
@@ -21,7 +22,11 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.accountService.headAccount().subscribe(
       () => {},
-      () => window.location.reload()
+      (error: HttpErrorResponse) => {
+        if (error.status >= 300 || error.status < 400) {
+          window.location.reload();
+        }
+      }
     );
 
     const now = moment();
