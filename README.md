@@ -31,6 +31,11 @@ To run Angular development server use `start` npm task.
 $ npm start
 ```
 
+The application will be available on [`http://localhost:4200`](http://localhost:4200).
+
+**Note**, that as a Docker service, the application works as a [nginx][nginx] server, available on
+port `:80`.
+
 ## Project repositories
 
 * [`articles-backend`][articles-backend], which holds backend application.
@@ -44,3 +49,5 @@ $ npm start
 [articles-webapp]: https://github.com/malczuuu/articles-webapp
 
 [articles-setup]: https://github.com/malczuuu/articles-setup
+
+[nginx]: https://hub.docker.com/_/nginx
