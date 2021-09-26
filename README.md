@@ -42,7 +42,7 @@ port `:80`.
 * [`articles-webapp`][articles-webapp], which holds frontend application.
 * [`articles-setup`][articles-setup], which holds Docker environment setup.
 
-[articles-backend]: https://github.com/malczuuu/articles-setup
+[articles-backend]: https://github.com/malczuuu/articles-backend
 
 [articles-backend-running]: https://github.com/malczuuu/articles-backend#running-on-local-machine
 
