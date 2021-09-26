@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Article, ArticleUpdate } from '../../../../core/api/article.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-article-form',
@@ -35,5 +36,15 @@ export class ArticleFormComponent implements OnInit {
     const content: string = this.articleForm?.get('content')?.value;
     this.save.emit({ title: title, content: content });
     this.formEnabled = true;
+  }
+
+  hasLastModifiedAt(): boolean {
+    return this.getLastModifiedAt().length > 0;
+  }
+
+  getLastModifiedAt(): string {
+    return this.article
+      ? moment(this.article.last_modified_date).format('YYYY-MM-DD HH:mm:ss')
+      : '';
   }
 }
