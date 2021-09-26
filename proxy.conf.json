@@ -2,6 +2,11 @@
   "/api": {
     "target": "http://localhost:8080",
     "secure": false,
-    "changeOrigin": true
+    "changeOrigin": true,
+    "headers": {
+      "X-Auth-Realm": "pokemon",
+      "X-Auth-Userid": "00000000-0000-0000-0000-000000000000",
+      "X-Auth-Username": "ash.ketchum@example.com"
+    }
   }
 }

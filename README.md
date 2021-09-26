@@ -23,8 +23,7 @@ $ docker build -t articles-webapp .
 
 Running locally requires to `articles-backend` application (along with its own dependencies) to be
 up and running. Angular development server launches a reverse-proxy for `/api` paths. Follow
-[backend instructions][articles-backend-running] to launch it. Make sure to enable anonymous
-access (for example with `ANONYMOUS_ACCESS: true` environment variable).
+[backend instructions][articles-backend-running] to launch it.
 
 To run Angular development server use `start` npm task.
 
