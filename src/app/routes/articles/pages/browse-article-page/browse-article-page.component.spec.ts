@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BrowseArticlePageComponent } from './browse-article-page.component';
 
 describe('BrowseArticlePageComponent', () => {
