@@ -1,38 +1,47 @@
 # Articles Webapp
 
-Frontend of a simple application for exploring multi-tenancy concepts.
+Frontend of a simple application for exploring multi-tenancy concepts. Works within a single tenant
+environment, identified by browsed domain.
+
+## Table of Contents
+
+* [Building Docker image](#building-docker-image)
+* [Running on local machine](#running-on-local-machine)
+* [Project repositories](#project-repositories)
 
 ## Building Docker image
+
+Building Docker image requires to first build distribution files on local machine,
+before `docker build` call.
 
 ```bash
 $ npm run build
 $ docker build -t articles-webapp .
 ```
 
-## Angular
+## Running on local machine
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.5.
+Running locally requires to `articles-backend` application (along with its own dependencies) to be
+up and running. Angular development server launches a reverse-proxy for `/api` paths. Follow
+[backend instructions][articles-backend-running] to launch it. Make sure to enable anonymous
+access (for example with `ANONYMOUS_ACCESS: true` environment variable).
 
-### Development server
+To run Angular development server use `start` npm task.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+```shell
+$ npm start
+```
 
-### Code scaffolding
+## Project repositories
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* [`articles-backend`][articles-backend], which holds backend application.
+* [`articles-webapp`][articles-webapp], which holds frontend application.
+* [`articles-setup`][articles-setup], which holds Docker environment setup.
 
-### Build
+[articles-backend]: https://github.com/malczuuu/articles-setup
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+[articles-backend-running]: https://github.com/malczuuu/articles-backend#running-on-local-machine
 
-### Running unit tests
+[articles-webapp]: https://github.com/malczuuu/articles-webapp
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-### Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-### Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[articles-setup]: https://github.com/malczuuu/articles-setup
